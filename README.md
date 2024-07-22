@@ -6,6 +6,13 @@ dumb example to tests rust processing in a php environment.
 
 ```bash
 $ cargo build
+# this will create a shared object inside ./target/debug
+# and you can inspect its exported method from the .so with `nm` :
+
+$ nm ./target/debug/libzang.so | grep zang
+0000000000011c20 t _ZN4zang10get_module8internal17hc3558098105dd764E
+0000000000010ed0 t _ZN4zang10rs_process17h7dfdee01ff481793E
+0000000000011230 t _ZN4zang24_internal_php_rs_process17hbc54390b7e6de054E <<< the exported method
 
 # To run with rust method, just pass an argument to the end of this command, any string
 $ php -d extension=target/debug/libzang.so ./test.php
@@ -45,3 +52,4 @@ int(3080)
 
 done in 9.2409999370575s
 ```
+
