@@ -6,9 +6,10 @@ dumb example to tests rust processing in a php environment.
 
 ```bash
 $ cargo build
-# this will create a shared object inside ./target/debug
-# and you can inspect its exported method from the .so with `nm` :
+# this will create a shared object inside ./target/debug/libzang.so
+# that will be used after when running the php script.
 
+# And you can inspect its exported method (or ABI, Application Binary Interface)from the .so with `nm` :
 $ nm ./target/debug/libzang.so | grep zang
 0000000000011c20 t _ZN4zang10get_module8internal17hc3558098105dd764E
 0000000000010ed0 t _ZN4zang10rs_process17h7dfdee01ff481793E
